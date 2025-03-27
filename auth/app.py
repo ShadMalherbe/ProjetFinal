@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://admin:adminpass@postgres:5432/authdb'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://tp2p2_authdb_user:XKcd0E4VQLOz6kdAkYu8xVrA6vN47QCt@dpg-cv5ipqjqf0us73f0s7qg-a.virginia-postgres.render.com/tp2p2_authdb'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
