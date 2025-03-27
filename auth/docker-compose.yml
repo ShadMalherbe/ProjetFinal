@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  flask-app:
+    build: .
+    container_name: flask-app
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+      - DB_HOST=dpg-cv5ipqjqf0us73f0s7qg-a
+      - DB_USER=tp2p2_authdb_user
+      - DB_PASSWORD=XKcd0E4VQLOz6kdAkYu8xVrA6vN47QCt
+      - DB_NAME=tp2p2_authdb
+      - DB_PORT=5432
+    networks:
+      - mynetwork
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adminpass
+      POSTGRES_DB: authdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    external: true
+volumes:
+  pg_data:
+
