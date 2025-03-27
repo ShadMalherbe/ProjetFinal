@@ -30,7 +30,7 @@ app.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
     try {
-        const response = await axios.post('http://flask-app:5000/auth', { 
+        const response = await axios.post('https://projetfinal-1-p5uz.onrender.com', { 
             username,
             password
         });
